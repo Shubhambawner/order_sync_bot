@@ -129,7 +129,7 @@ bot.on('photo', async (msg) => {
     try {
         // Get file URL from Telegram API
         const fileInfo = await bot.getFile(fileId);
-        console.log(fileInfo);
+        if (debug) console.log(fileInfo);
 
         // Check if the './photos' directory exists, if not, create it
         const photosDir = path.join(__dirname, 'photos');
