@@ -27,7 +27,7 @@ function extractOrderInfo(text) {
             order.total_quantity = s[i + 1]
             order.status = s[i + 2]
             order.tradingsymbol = s[i + 3]
-            order.price = s[i + 4]
+            order.price = Number(s[i + 4])
             i += 4
             arr.push(order)
         }
@@ -88,7 +88,7 @@ async function populateISINs(stockOrders) {
             stockOrder.isin = localDb[tradingsymbol][0]; // Use the ISIN from the local DB
         } else {
             console.error(`ISIN not found for tradingsymbol: ${tradingsymbol}`);
-            stockOrder.isin = 'ISIN not found'; // Mark as not found
+            // stockOrder.isin = 'ISIN not found'; // Mark as not found
         }
 
         return stockOrder; // Return updated stock order

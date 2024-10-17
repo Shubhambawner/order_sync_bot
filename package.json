@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node main.js",
-    "setup":"npm install --production"
+    "setup": "npm install --production"
   },
   "keywords": [],
   "author": "",
@@ -17,9 +17,9 @@
     "node-telegram-bot-api": "^0.66.0",
     "path": "^0.12.7",
     "telegram-bot-api": "^2.0.1",
-    "tesseract.js": "^5.1.1"
+    "tesseract.js": "^5.1.1",
+    "dotenv": "^16.4.5"
   },
   "devDependencies": {
-    "dotenv": "^16.4.5"
   }
 }
