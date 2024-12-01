@@ -95,8 +95,12 @@ bot.on('photo', async (msg) => {
             if (debug) console.log(api_response);
             if (debug) await bot.sendMessage(chatId, JSON.stringify(api_response.data));
 
-            bot.sendMessage(chatId, 'Order added successfully!');
-            bot.sendMessage(chatId, JSON.stringify(jsonData));
+            msg = ""
+            jsonData.forEach(data=>{
+                msg+= data.price+" "+data.total_quantity+" "+data.tradingsymbol+" "+data.type+"\n";
+            })
+            await bot.sendMessage(chatId, msg);
+            bot.sendMessage(chatId, '👍');
         } else {
             bot.sendMessage(chatId, 'Failed to add order: ' + api_response.data.message);
         }
