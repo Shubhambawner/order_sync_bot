@@ -1,3 +1,7 @@
+// this is needed to load ENV seperately if test suite is being run
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config(); // Load .env only in development
+}
 const { GoogleGenerativeAI, SchemaType } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_AI_KEY);
 
