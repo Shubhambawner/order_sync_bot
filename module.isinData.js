@@ -1,4 +1,4 @@
-{
+module.exports = {
     "ABB": [
         "INE117A01022",
         "ABB INDIA LIMITED"
