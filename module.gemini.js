@@ -51,20 +51,21 @@ const model = genAI.getGenerativeModel({
 });
 
 async function extractOrderInfo(text) {
+  if (text.length==0) return []
   try {
     // Define a prompt to guide the ChatGPT API towards the required JSON structure
     const prompt = text;
 
 
     const result = await model.generateContent(prompt);
-    console.log(result.response.text());
+    // console.log(result.response.text());
 
     // Parse the JSON response from the assistant's reply
     const replyContent = result.response.text();
 
     // Attempt to parse JSON from the response content
     const orders = JSON.parse(replyContent);
-    console.log(orders, typeof orders);
+    // console.log(orders, typeof orders);
 
     return orders; // Returns the parsed JSON
   } catch (error) {
