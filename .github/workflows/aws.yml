@@ -61,7 +61,7 @@ jobs:
             echo "Deployment successful: Tests passed!"
             
             # Restart the project after success
-            npm start &
+            nohup npm start > /home/ubuntu/order-sync-bot-log/app.log 2>&1 &
           else
             echo "Deployment failed: Tests did not pass."
             exit 1
