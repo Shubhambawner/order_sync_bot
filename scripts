@@ -1,11 +1,9 @@
-pscp C:\path\to\your\.env username@server_ip:/path/to/your/project/directory/
-
+# server first time:
+ssh -i "C:\Users\bawne\OneDrive\Desktop\order-sync-bot-key-pair.pem" ubuntu@ec2-13-61-35-131.eu-north-1.compute.amazonaws.com
 sudo apt install git
 sudo apt install nodejs npm
-git clone https://github.com/Shubhambawner/order_sync_bot.git
-cd order_sync_bot
-npm run setup
-npm start
+sudo npm install -g pm2
 
-
- ssh -i "C:\Users\bawne\OneDrive\Desktop\order-sync-bot-key-pair.pem" ubuntu@ec2-13-61-35-131.eu-north-1.compute.amazonaws.com
+# server log check
+ssh -i "C:\Users\bawne\OneDrive\Desktop\order-sync-bot-key-pair.pem" ubuntu@ec2-13-61-35-131.eu-north-1.compute.amazonaws.com
+pm2 log bot 
