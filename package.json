@@ -8,7 +8,7 @@
     "start": "node bot.js",
     "setup": "npm install --production"
   },
-  "keywords": [ ],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
