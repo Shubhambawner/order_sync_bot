@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== 'production') {
 const token = process.env.telegram_token; //info: telegram Bot token, named as order_sync_bot
 const deployment_id = process.env.appscript_deployment_id
 const gapi_url = `https://script.google.com/macros/s/${deployment_id}/exec`
-var debug = true
+var debug = false
 const chatIdMap = {
     '6867886957': 'LQT791'
 }
