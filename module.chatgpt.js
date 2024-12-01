@@ -1,7 +1,3 @@
-// const OpenAI = require( 'openai')
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config(); // Load .env only in development
-}
 const OpenAI = require('openai');
 
 const openai = new OpenAI({
