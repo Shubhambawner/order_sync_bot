@@ -32,7 +32,8 @@ jobs:
     # SSH into EC2 and deploy the project
     - name: Deploy on EC2 instance
       run: |
-        ssh -o StrictHostKeyChecking=no -i ~/.ssh/ec2_key.pem ec2-user@${{ secrets.EC2_PUBLIC_IP }} << 'EOF'
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/ec2_key.pem ubuntu@${{ secrets.EC2_PUBLIC_IP }} << 'EOF'
+          
           # Stop the running project by killing any npm or node process
           pkill -f "npm" || true  # or "pkill -f 'node'" if npm is not working
 
