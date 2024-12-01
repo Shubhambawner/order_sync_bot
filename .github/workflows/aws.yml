@@ -37,14 +37,19 @@ jobs:
           pkill -f "npm" || true  # or "pkill -f 'node'" if npm is not working
 
           # Remove the existing project directory and clone fresh from GitHub
-          rm -rf /path/to/your/project
-          git clone https://github.com/your-username/your-repository.git /path/to/your/project
+          rm -rf /home/ubuntu/order-sync-bot
+          git clone https://github.com/Shubhambawner/order_sync_bot.git /home/ubuntu/order-sync-bot
 
           # Change to project directory
-          cd /path/to/your/project
+          cd /home/ubuntu/order-sync-bot
 
           # Install dependencies
           npm install
+
+          # Export environment variables for secrets
+          export telegram_token=${{ secrets.telegram_token }}
+          export appscript_deployment_id=${{ secrets.appscript_deployment_id }}
+          export GEMINI_AI_KEY=${{ secrets.GEMINI_AI_KEY }}
 
           # Run tests
           npm test
