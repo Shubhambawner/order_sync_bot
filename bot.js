@@ -100,7 +100,7 @@ bot.on('photo', async (msg) => {
                 msg+= data.price+" "+data.total_quantity+" "+data.tradingsymbol+" "+data.type+"\n";
             })
             await bot.sendMessage(chatId, msg);
-            bot.sendMessage(chatId, '👍');
+            // bot.sendMessage(chatId, '👍');
         } else {
             bot.sendMessage(chatId, 'Failed to add order: ' + api_response.data.message);
         }
