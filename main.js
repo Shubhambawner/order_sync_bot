@@ -3,6 +3,9 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 const Tesseract = require('tesseract.js');
+const extractOrderInfo = require('./module.gemini')
+
+
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config(); // Load .env only in development
 }
@@ -15,39 +18,6 @@ const chatIdMap = {
 }
 
 const bot = new TelegramBot(token, { polling: true });
-
-// Function to extract order information from the message text
-function extractOrderInfo(text) {
-    s = text.split(/[ \n]/)
-    arr = []
-    for (i = 0; i < s.length; i++) {
-        if (s[i] == 'BUY' || s[i] == 'SELL') {
-            order = {}
-            order.type = s[i]
-            order.total_quantity = s[i + 1]
-            order.status = s[i + 2]
-            order.tradingsymbol = s[i + 3]
-            order.price = Number(s[i + 4])
-            i += 4
-            arr.push(order)
-        }
-    }
-
-
-    return arr
-    //  [
-    //     {
-    //         date: Date.now(),
-    //         client_id: 'GXT264',
-    //         type: 'sell',
-    //         isin: 'INE117A01022',
-    //         exchange: 'NSE',
-    //         tradingsymbol: 'ABB',
-    //         total_quantity: 1,
-    //         price: 123
-    //     }
-    // ]
-}
 
 //-----------------------------------------------------------------
 // Path to the local JSON database file
@@ -75,8 +45,8 @@ var localDb;
 async function populateISINs(stockOrders) {
     // Load the local symbol-ISIN map from the JSON file
     if (!localDb) {
-        console.log('local db loaded')
         localDb = await loadLocalDb();
+        console.log('local db loaded')
     }
 
     // Map each stock order to its ISIN from the local DB
@@ -99,6 +69,10 @@ async function populateISINs(stockOrders) {
 //------------------------------------------------------------------------
 function quantityCorrection(incomingInfo) {
     incomingInfo.map(x => {
+        // todo add logic: if string has '/' then only do this.
+        if (x.total_quantity) {
+            
+        }
         x.total_quantity = Number(x.total_quantity.substr(0, Math.floor(x.total_quantity.length / 2)));
         return x
     })
@@ -106,9 +80,10 @@ function quantityCorrection(incomingInfo) {
 }
 
 async function getOrders(text, chatId) {
-    incomingInfo = extractOrderInfo(text)
+    incomingInfo = await extractOrderInfo(text)
     incomingInfoISIN = await populateISINs(incomingInfo)
-    orderData = quantityCorrection(incomingInfoISIN)
+    // orderData = quantityCorrection(incomingInfoISIN)
+    orderData = incomingInfoISIN
     orderData.forEach(order => {
         order.date = Date.now()
         order.client_id = chatIdMap[chatId]
@@ -175,7 +150,7 @@ bot.on('photo', async (msg) => {
 
         // Send the payload to Google App Script API
 
-        const api_response = await axios.post(gapi_url + `?action=update`, orderData);
+        const api_response = await axios.post(gapi_url + `?action=update`, jsonData);
 
         // Handle successful response from Google App Script
         if (api_response.data.status === 'success') {

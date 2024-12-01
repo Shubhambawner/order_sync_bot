@@ -12,14 +12,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
     "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
     "fs": "^0.0.1-security",
     "node-telegram-bot-api": "^0.66.0",
+    "openai": "^4.68.4",
     "path": "^0.12.7",
     "telegram-bot-api": "^2.0.1",
-    "tesseract.js": "^5.1.1",
-    "dotenv": "^16.4.5"
-  },
-  "devDependencies": {
+    "tesseract.js": "^5.1.1"
   }
 }

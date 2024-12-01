@@ -1,0 +1,8 @@
+pscp C:\path\to\your\.env username@server_ip:/path/to/your/project/directory/
+
+sudo apt install git
+sudo apt install nodejs npm
+git clone https://github.com/Shubhambawner/order_sync_bot.git
+cd order_sync_bot
+npm run setup
+npm start
