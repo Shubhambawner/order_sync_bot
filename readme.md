@@ -1,0 +1,1 @@
+CI/CD set up on master branch using **github actions**, deployment on **ec2 server** with name order-sync-bot
