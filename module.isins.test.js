@@ -1,6 +1,10 @@
 const populateISINs  = require('./module.isins');
 const isinData = require('./module.isinData'); // Import the ISIN data module
 
+dummyFn = (message)=>{
+  // this was supposed to send message to cliennt, via telegram. not possible for testing
+}
+
 describe('populateISINs', () => {
   it('should attach ISINs to each object in the JSON based on tradingsymbol', () => {
     const inputJson = [
@@ -32,7 +36,7 @@ describe('populateISINs', () => {
         }
       ]
 
-    const result = populateISINs(inputJson);
+    const result = populateISINs(inputJson, dummyFn);
     
     expect(JSON.stringify(result)).toEqual(JSON.stringify(expectedOutput));
   });
