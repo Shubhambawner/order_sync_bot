@@ -18,7 +18,8 @@ const deployment_id = process.env.appscript_deployment_id
 const gapi_url = `https://script.google.com/macros/s/${deployment_id}/exec`
 var debug = false
 const chatIdMap = {
-    '6867886957': 'LQT791'
+    '6867886957': 'LQT791',
+    '6988833424': 'GXT264'
 }
 
 const bot = new TelegramBot(token, { polling: true });
@@ -57,7 +58,7 @@ bot.on('photo', async (msg) => {
 
     console.log(chatId, 'chatId');
     if (!chatIdMap[chatId]) {
-        await bot.sendMessage(chatId, 'No autherisation to use!' + error.message);
+        await bot.sendMessage(chatId, 'No autherisation to use!');
         return;
     }
     try {
