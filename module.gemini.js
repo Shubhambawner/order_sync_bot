@@ -14,7 +14,7 @@ const schema = {
       type: {
         type: SchemaType.STRING, // Or whatever your library uses for string type
         description: "Order type (BUY or SELL)",
-        enum: ['BUY', 'SELL'], // Restrict to valid values
+        enum: ['buy', 'sell'], // Restrict to valid values
         nullable: false,
       },
       tradingsymbol: {

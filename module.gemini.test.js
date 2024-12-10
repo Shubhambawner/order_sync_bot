@@ -11,19 +11,19 @@ BUY 2720.55 2 RELIANCE`;
         price: 915.7,
         total_quantity: 5,
         tradingsymbol: 'LICI',
-        type: 'BUY'
+        type: 'buy'
       },
       {
         price: 886.4,
         total_quantity: 5,
         tradingsymbol: 'TATAMOTORS',
-        type: 'BUY'
+        type: 'buy'
       },
       {
         price: 2720.55,
         total_quantity: 2,
         tradingsymbol: 'RELIANCE',
-        type: 'BUY'
+        type: 'buy'
       }
     ];
 
@@ -52,13 +52,13 @@ SELL 886.4 2 RELIANCE`;
         price: 915.7,
         total_quantity: 5,
         tradingsymbol: 'LICI',
-        type: 'BUY'
+        type: 'buy'
       },
       {
         price: 886.4,
         total_quantity: 2,
         tradingsymbol: 'RELIANCE',
-        type: 'SELL'
+        type: 'sell'
       }
     ];
 
@@ -74,13 +74,13 @@ SELL 200.7 5 XYZ`;
         price: 100.5,
         total_quantity: 10,
         tradingsymbol: 'ABC',
-        type: 'BUY'
+        type: 'buy'
       },
       {
         price: 200.7,
         total_quantity: 5,
         tradingsymbol: 'XYZ',
-        type: 'SELL'
+        type: 'sell'
       }
     ];
 
