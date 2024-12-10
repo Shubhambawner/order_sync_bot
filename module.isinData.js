@@ -2635,6 +2635,10 @@ module.exports = {
         "INE613B01010",
         "ICDS LTD."
     ],
+    "CDSL": [
+        "INE736A01011",
+        "CDSL LTD."
+    ],
     "CANFINHOME": [
         "INE477A01020",
         "CAN FIN HOMES LTD."

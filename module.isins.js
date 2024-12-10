@@ -24,7 +24,7 @@ const localDataJson = require('./module.isinData');
 //     }
 // }
 // Function to populate ISINs for stock orders using only local DB
-function populateISINs(stockOrders) {
+function populateISINs(stockOrders, sendMessage) {
     // Load the local symbol-ISIN map from the JSON file
     // if (!localDataJson) {
     //     localDataJson = await loadLocalDb();
@@ -40,6 +40,7 @@ function populateISINs(stockOrders) {
             stockOrder.isin = localDataJson[tradingsymbol][0]; // Use the ISIN from the local DB
         } else {
             console.error(`ISIN not found for tradingsymbol: ${tradingsymbol}`);
+            sendMessage(`ISIN not found for tradingsymbol: ${tradingsymbol}`)
             // stockOrder.isin = 'ISIN not found'; // Mark as not found
         }
 

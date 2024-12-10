@@ -40,14 +40,14 @@ const bot = new TelegramBot(token, { polling: true });
 
 async function getOrders(text, chatId) {
     incomingInfo = await extractOrderInfo(text)
-    incomingInfoISIN = populateISINs(incomingInfo)
+    incomingInfoISIN = populateISINs(incomingInfo, (message)=>{bot.sendMessage(chatId, message)})
     // orderData = quantityCorrection(incomingInfoISIN)
-    orderData = incomingInfoISIN
-    orderData.forEach(order => {
+    // orderData = incomingInfoISIN
+    incomingInfoISIN.forEach(order => {
         order.date = Date.now()
         order.client_id = chatIdMap[chatId]
     });
-    return incomingInfo
+    return incomingInfoISIN
 }
 // Listener for receiving images
 bot.on('photo', async (msg) => {
@@ -100,7 +100,7 @@ bot.on('photo', async (msg) => {
                 msg+= data.price+" "+data.total_quantity+" "+data.tradingsymbol+" "+data.type+"\n";
             })
             await bot.sendMessage(chatId, msg);
-            // bot.sendMessage(chatId, '👍');
+            bot.sendMessage(chatId, '👍');
         } else {
             bot.sendMessage(chatId, 'Failed to add order: ' + api_response.data.message);
         }
